@@ -36,12 +36,12 @@ Key insights:
 - **Language**: Python 3.9+
 - **Libraries**:
   - Data: `pandas`, `numpy`, `seaborn`, `matplotlib`
-  - ML: `scikit-learn` (LogisticRegression, DecisionTree, RandomForest), `xgboost`
+  - ML: `scikit-learn` (LogisticRegression, DecisionTree, RandomForest)
   - Utils: `scipy` for stats
-- **Environment**: Jupyter Notebook (tested on Kaggle/Colab).
+- **Environment**: Jupyter Notebook .
 
 
-(Key ones: pandas, numpy, matplotlib, seaborn, scikit-learn, xgboost, scipy)
+(Key ones: pandas, numpy, matplotlib, seaborn, scikit-learn, scipy)
 
 3. Run notebooks:
 - Open in Jupyter: `jupyter notebook`
