@@ -1,48 +1,46 @@
-# Spotify_Churn_Prediction (2025 Dataset)
+![Spotify Logo](https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg)
 
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/) [![Scikit-learn](https://img.shields.io/badge/Scikit-learn-1.2%2B-yellow)](https://scikit-learn.org/) [![GitHub](https://img.shields.io/badge/GitHub-Repo-black?logo=github)](https://github.com/YOUR_USERNAME/spotify-churn-prediction) [![License: MIT](https://img.shields.io/badge/License-MIT-green)](https://opensource.org/licenses/MIT)
+# Spotify User Churn Prediction (2025 Dataset)
 
-Predicting whether Spotify users will churn (cancel their subscription) using machine learning on a 2025 dataset. This project explores exploratory data analysis (EDA), handles class imbalance, and benchmarks models like Logistic Regression, Decision Trees, Random Forest, and XGBoost.
+## 📖 Overview
+This project analyzes Spotify user behavior to predict **churn** (whether a user cancels their subscription or remains active). Using a dataset of ~8,000 users, we perform Exploratory Data Analysis (EDA), preprocess features, and train/evaluate multiple machine learning models. The goal? Help Spotify retain users by identifying at-risk ones early.
 
-Inspired by real-world churn analytics—think: "Why did that Premium user dip after bingeing playlists?"
+Key insights:
+- **Churn Rate**: ~20-25% (imbalanced classes—churners are the minority).
+- **Top Predictors**: Subscription type, listening time, and ads exposure.
+- **Best Model**: Decision Tree for high recall (~50% on churners) if false positives are okay; XGBoost for balanced performance.
 
-## 📊 Project Overview
-- **Goal**: Build a binary classifier to predict `is_churned` (0: Active, 1: Churned) based on user behavior and demographics.
-- **Key Insights**:
-  - Churn rate: ~20-25% (imbalanced dataset—handled via undersampling).
-  - Top predictors: `subscription_type`, `ads_listened_per_week`, `listening_time`.
-  - Best model: Decision Tree (Recall ~50% for churners—great for early detection despite false positives).
-- **Challenges**: Modest performance (ROC-AUC ~0.50-0.53) due to noisy data; suggests need for more features (e.g., playlist diversity) in production.
+Full analysis and dashboard available on [GitHub](https://github.com/YourUsername/Spotify-Churn-Prediction). (Update this to your repo link!)
 
-Full results table (from models):
-| Model              | Accuracy | Precision | Recall  | F1-Score | ROC-AUC |
-|--------------------|----------|-----------|---------|----------|---------|
-| Logistic Regression| 0.518   | 0.266    | 0.490  | 0.345   | 0.497  |
-| Decision Tree     | 0.515   | 0.267    | 0.502  | 0.349   | 0.501  |
-| Random Forest     | 0.725   | 0.297    | 0.046  | 0.079   | 0.530  |
-| XGBoost           | 0.608   | 0.291    | 0.357  | 0.321   | 0.518  |
+## 📊 Dataset
+- **Source**: Synthetic Spotify churn data (2025 edition) with 8,000+ rows.
+- **Features**:
+  | Column                  | Description                          | Type    | Example Values          |
+  |-------------------------|--------------------------------------|---------|-------------------------|
+  | `user_id`              | Unique user identifier              | int    | 1, 2, ...              |
+  | `gender`               | User gender                         | str    | Female, Male, Other    |
+  | `age`                  | User age                            | int    | 17-59                  |
+  | `country`              | User country code                   | str    | CA, US, DE, AU, ...    |
+  | `subscription_type`    | Plan type                           | str    | Free, Premium, Family, Student |
+  | `listening_time`       | Weekly listening hours              | int    | 0-300                  |
+  | `songs_played_per_day` | Daily songs played                  | int    | 0-100                  |
+  | `skip_rate`            | Fraction of songs skipped           | float  | 0.0-1.0                |
+  | `device_type`          | Primary device                      | str    | Mobile, Desktop, Web   |
+  | `ads_listened_per_week`| Weekly ad exposures (Free users)    | int    | 0-50                   |
+  | `offline_listening`    | Offline mode usage (0/1)            | int    | 0, 1                   |
+  | `is_churned`           | Target: 1 if churned, 0 if active   | int    | 0, 1                   |
 
-## 🗄️ Dataset
-- **Source**: Synthetic 2025 Spotify user data (8,000+ rows).
-- **Columns**:
-  - `user_id`: Unique ID.
-  - `gender`: Male/Female/Other.
-  - `age`: User age (16-59).
-  - `country`: e.g., CA, US, DE.
-  - `subscription_type`: Free/Family/Premium/Student.
-  - `listening_time`: Minutes per session.
-  - `songs_played_per_day`: Daily plays.
-  - `skip_rate`: Fraction of songs skipped (0-1).
-  - `device_type`: Desktop/Mobile/Web.
-  - `ads_listened_per_week`: Ad exposures.
-  - `offline_listening`: 0/1 (offline mode usage).
-  - `is_churned`: Target (0/1).
-- Download: `spotify_churn_dataset.csv` (included in repo).
+- **Download**: [spotify_churn_dataset.csv](spotify_churn_dataset.csv) (included in repo).
+- **Size**: ~8,000 rows × 12 columns.
+- **Challenges**: Class imbalance (80% active, 20% churned) → Handled with undersampling in `UnderSampling.ipynb`.
 
 ## 🛠️ Tech Stack
-- **Language**: Python 3.8+
-- **Libraries**: Pandas, NumPy, Matplotlib/Seaborn (EDA), Scikit-learn (ML), SciPy (stats).
-- **Environment**: Jupyter Notebook.
+- **Language**: Python 3.9+
+- **Libraries**:
+  - Data: `pandas`, `numpy`, `seaborn`, `matplotlib`
+  - ML: `scikit-learn` (LogisticRegression, DecisionTree, RandomForest), `xgboost`
+  - Utils: `scipy` for stats
+- **Environment**: Jupyter Notebook (tested on Kaggle/Colab).
 
-## 🚀 Quick Start
-1. **Clone the Repo**:
+### Installation
+1. Clone the repo:
