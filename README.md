@@ -8,9 +8,7 @@ This project analyzes Spotify user behavior to predict **churn** (whether a user
 Key insights:
 - **Churn Rate**: ~20-25% (imbalanced classes—churners are the minority).
 - **Top Predictors**: Subscription type, listening time, and ads exposure.
-- **Best Model**: Decision Tree for high recall (~50% on churners) if false positives are okay; XGBoost for balanced performance.
-
-Full analysis and dashboard available on [GitHub](https://github.com/YourUsername/Spotify-Churn-Prediction). (Update this to your repo link!)
+- **Best Model**: Logistic Regression for high recall (~52% on churners); therefore Logistic Regression for balanced performance.
 
 ## 📊 Dataset
 - **Source**: Synthetic Spotify churn data (2025 edition) with 8,000+ rows.
@@ -30,7 +28,7 @@ Full analysis and dashboard available on [GitHub](https://github.com/YourUsernam
   | `offline_listening`    | Offline mode usage (0/1)            | int    | 0, 1                   |
   | `is_churned`           | Target: 1 if churned, 0 if active   | int    | 0, 1                   |
 
-- **Download**: [spotify_churn_dataset.csv](spotify_churn_dataset.csv) (included in repo).
+- **Download**: [spotify_churn_dataset.csv](https://www.kaggle.com/datasets/nabihazahid/spotify-dataset-for-churn-analysis/data) (included in repo).
 - **Size**: ~8,000 rows × 12 columns.
 - **Challenges**: Class imbalance (80% active, 20% churned) → Handled with undersampling in `UnderSampling.ipynb`.
 
@@ -59,7 +57,6 @@ Full analysis and dashboard available on [GitHub](https://github.com/YourUsernam
 - Encoding: One-hot for categoricals (gender, country, etc.).
 - Scaling: StandardScaler for numerics.
 - Train/Test Split: 80/20 stratified.
-- Handling Imbalance: Undersampling in [UnderSampling.ipynb](UnderSampling.ipynb).
 
 ### 3. Models & Performance
 Trained on balanced data; evaluated with Accuracy, Precision, Recall, F1, ROC-AUC.
@@ -73,7 +70,6 @@ Trained on balanced data; evaluated with Accuracy, Precision, Recall, F1, ROC-AU
 
 - **Threshold Tuning**: In `spotify_copy1.ipynb`, we tuned to 0.46 for better recall (~43% on churners).
 - **Visuals**: Confusion matrices, feature importances, ROC curves.
-- Notebooks: [spotify_copy1.ipynb](spotify_copy1.ipynb) for tuned models; [UnderSampling.ipynb](UnderSampling.ipynb) for imbalance fixes.
 
 ### Key Findings
 - **Top Features**: `subscription_type`, `listening_time`, `ads_listened_per_week`.
@@ -82,20 +78,19 @@ Trained on balanced data; evaluated with Accuracy, Precision, Recall, F1, ROC-AU
 
 ## 🎯 Conclusions
 - **For Retention**: Use Decision Tree to flag ~50% of churners (tolerate false positives for outreach).
-- **Balanced Use**: XGBoost for stable predictions.
+- **Balanced Use**: Logistic for stable predictions.
 - Models aren't production-ready yet—improve with more data or advanced techniques like SHAP for explainability.
 
 ## 🚀 Next Steps & Improvements
+- Will try oversampling and undersampling to see whether the performance boosts or not.
 - Add cross-validation and hyperparameter tuning (e.g., GridSearchCV on Random Forest).
 - Deploy: Streamlit app for predictions.
 - Extend: Incorporate audio features (e.g., valence from Spotify API).
 
-## 🤝 Contributing
-Pull requests welcome! Fork, tweak, and PR. Issues? Open one for bugs or ideas.
 
 ## 📄 License
 MIT License—use freely, just credit back.
 
 ## 👏 Acknowledgments
 - Dataset inspired by Kaggle Spotify challenges.
-- Built with ❤️ by [Your Name](https://github.com/YourUsername).
+- Built with ❤️ by [Shivam Rawat](https://github.com/shivamrawat03).
