@@ -42,5 +42,60 @@ Full analysis and dashboard available on [GitHub](https://github.com/YourUsernam
   - Utils: `scipy` for stats
 - **Environment**: Jupyter Notebook (tested on Kaggle/Colab).
 
-### Installation
-1. Clone the repo:
+
+(Key ones: pandas, numpy, matplotlib, seaborn, scikit-learn, xgboost, scipy)
+
+3. Run notebooks:
+- Open in Jupyter: `jupyter notebook`
+- Or Colab: Upload and run.
+
+## 🔍 Analysis & Models
+### 1. EDA (Exploratory Data Analysis)
+- Visualizations: Distributions, correlations, churn by demographics/subscription.
+- Insights: Free users churn more (high ads/skip rate); Premium users with low listening time at risk.
+- Notebook: [spotify-2025-eda-prediction-models.ipynb](spotify-2025-eda-prediction-models.ipynb)
+
+### 2. Preprocessing
+- Encoding: One-hot for categoricals (gender, country, etc.).
+- Scaling: StandardScaler for numerics.
+- Train/Test Split: 80/20 stratified.
+- Handling Imbalance: Undersampling in [UnderSampling.ipynb](UnderSampling.ipynb).
+
+### 3. Models & Performance
+Trained on balanced data; evaluated with Accuracy, Precision, Recall, F1, ROC-AUC.
+
+| Model              | Accuracy | Precision (Churn) | Recall (Churn) | F1 (Churn) | ROC-AUC |
+|--------------------|----------|-------------------|----------------|------------|---------|
+| Logistic Regression| 0.518   | 0.266            | 0.490         | 0.345     | 0.497  |
+| Decision Tree     | 0.515   | 0.267            | 0.502         | 0.349     | 0.501  |
+| Random Forest     | 0.725   | 0.297            | 0.046         | 0.079     | 0.530  |
+| XGBoost           | 0.608   | 0.291            | 0.357         | 0.321     | 0.518  |
+
+- **Threshold Tuning**: In `spotify_copy1.ipynb`, we tuned to 0.46 for better recall (~43% on churners).
+- **Visuals**: Confusion matrices, feature importances, ROC curves.
+- Notebooks: [spotify_copy1.ipynb](spotify_copy1.ipynb) for tuned models; [UnderSampling.ipynb](UnderSampling.ipynb) for imbalance fixes.
+
+### Key Findings
+- **Top Features**: `subscription_type`, `listening_time`, `ads_listened_per_week`.
+- **Recommendations**: Target Free users with high skips/ads via personalized offers.
+- **Limitations**: Modest recall (32-50%)—future: Ensemble more models or add time-series features (e.g., session duration trends).
+
+## 🎯 Conclusions
+- **For Retention**: Use Decision Tree to flag ~50% of churners (tolerate false positives for outreach).
+- **Balanced Use**: XGBoost for stable predictions.
+- Models aren't production-ready yet—improve with more data or advanced techniques like SHAP for explainability.
+
+## 🚀 Next Steps & Improvements
+- Add cross-validation and hyperparameter tuning (e.g., GridSearchCV on Random Forest).
+- Deploy: Streamlit app for predictions.
+- Extend: Incorporate audio features (e.g., valence from Spotify API).
+
+## 🤝 Contributing
+Pull requests welcome! Fork, tweak, and PR. Issues? Open one for bugs or ideas.
+
+## 📄 License
+MIT License—use freely, just credit back.
+
+## 👏 Acknowledgments
+- Dataset inspired by Kaggle Spotify challenges.
+- Built with ❤️ by [Your Name](https://github.com/YourUsername).
