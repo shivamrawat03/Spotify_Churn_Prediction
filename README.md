@@ -66,7 +66,6 @@ Trained on balanced data; evaluated with Accuracy, Precision, Recall, F1, ROC-AU
 | Logistic Regression| 0.518   | 0.266            | 0.490         | 0.345     | 0.497  |
 | Decision Tree     | 0.515   | 0.267            | 0.502         | 0.349     | 0.501  |
 | Random Forest     | 0.725   | 0.297            | 0.046         | 0.079     | 0.530  |
-| XGBoost           | 0.608   | 0.291            | 0.357         | 0.321     | 0.518  |
 
 - **Threshold Tuning**: In `spotify_copy1.ipynb`, we tuned to 0.46 for better recall (~43% on churners).
 - **Visuals**: Confusion matrices, feature importances, ROC curves.
